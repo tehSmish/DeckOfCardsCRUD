@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Card\Create;
 use App\Http\Livewire\Card\View;
+use App\Http\Livewire\Card\Edit;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::middleware([
     Route::prefix('card')->group(function () {
         Route::get('/create', Create::class)->name("cardMaker");
         Route::get('/view', View::class)->name("cardBrowser");
-
+        Route::get('/edit/{cardId}', Edit::class)->name("cardEditor");
     });
 
 

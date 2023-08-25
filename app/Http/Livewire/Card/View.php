@@ -8,15 +8,22 @@ use Livewire\Component;
 
 class View extends Component
 {
-
     public Collection $cards;
+    public string | null $search;
     public function mount()
     {
-        $this->cards = Card::all();
-
+        $this->search = null;
     }
     public function render()
     {
+        if($this->search)
+        {
+            $this->cards = Card::where('name', 'LIKE', '%' . $this->search . '%')->get();
+        }
+        else
+        {
+            $this->cards = Card::all();
+        }
         return view('livewire.card.view');
     }
 }
